@@ -7,7 +7,7 @@ const useGetUsers = () => {
   const { data, refetch, isPending } = useQuery({
     queryKey: ["all users"],
     queryFn: async () => {
-      const result = await axios.get(`http://localhost:9000/api/users`);
+      const result = await axios.get(`https://usermanagement-xi.vercel.app/api/users`);
       return result.data;
     }
   });

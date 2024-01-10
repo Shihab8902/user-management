@@ -24,7 +24,7 @@ const Modal = ({ isModalOpen, setIsModalOpen, id, refetch }) => {
     //Handle attachment upload
     const handleAttachmentUpload = () => {
         setIsUploading(true);
-        axios.post(`http://localhost:9000/api/users?id=${id}`, selectedFiles)
+        axios.post(`https://usermanagement-xi.vercel.app/api/users?id=${id}`, selectedFiles)
             .then(res => {
                 if (res.data) {
                     refetch();  //Refetch the latest data after uploading
