@@ -50,7 +50,7 @@ const UserCard = ({ user, refetch }) => {
             <p className="flex items-center gap-1 font-semibold text-xs"><SlCalender />30-12-2022</p>
         </div>
 
-        <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} id={user?._id} />
+        <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} id={user?._id} refetch={refetch} />
 
     </div>
 

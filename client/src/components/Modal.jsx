@@ -2,9 +2,15 @@ import { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 
 
-const Modal = ({ isModalOpen, setIsModalOpen, id }) => {
+import axios from 'axios';
+import Swal from 'sweetalert2'
+
+
+
+const Modal = ({ isModalOpen, setIsModalOpen, id, refetch }) => {
 
     const [selectedFiles, setSelectedFiles] = useState([]);
+    const [isUploading, setIsUploading] = useState(false);
 
 
     //Handle file selection 
@@ -17,7 +23,24 @@ const Modal = ({ isModalOpen, setIsModalOpen, id }) => {
 
     //Handle attachment upload
     const handleAttachmentUpload = () => {
+        setIsUploading(true);
+        axios.post(`http://localhost:9000/api/users?id=${id}`, selectedFiles)
+            .then(res => {
+                if (res.data) {
+                    refetch();  //Refetch the latest data after uploading
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Attachments uploaded successfully!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    setSelectedFiles([]);
+                    setIsModalOpen(!isModalOpen);
+                    setIsUploading(false);
+                }
 
+            })
     }
 
 
@@ -55,7 +78,11 @@ const Modal = ({ isModalOpen, setIsModalOpen, id }) => {
                             {/* Attachment upload button */}
                             {
                                 selectedFiles?.length > 0 && <div className="mt-5">
-                                    <button onClick={handleAttachmentUpload} className="w-full py-3 bg-green-600 rounded-md font-semibold text-white">Upload</button>
+                                    <button disabled={isUploading} onClick={handleAttachmentUpload} className="w-full py-3 bg-green-600 rounded-md font-semibold text-white">
+                                        {
+                                            isUploading ? "Uploading...." : "Upload"
+                                        }
+                                    </button>
                                 </div>
                             }
                         </div>

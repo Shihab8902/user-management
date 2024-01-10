@@ -34,7 +34,7 @@ const App = () => {
 
         <div className="h-full overflow-y-auto p-2">
           {
-            isPending ? ""
+            isPending ? <span className="text-center my-20 block text-lg font-semibold">Fetching Data....</span>
               : todo?.map(user => <UserCard key={user?._id} user={user} refetch={refetch} />)
           }
         </div>
@@ -54,7 +54,7 @@ const App = () => {
 
         <div className="h-full overflow-y-auto p-2">
           {
-            isPending ? ""
+            isPending ? <span className="text-center my-20 block text-lg font-semibold">Fetching Data....</span>
               : incomplete?.map(user => <UserCard key={user?._id} user={user} refetch={refetch} />)
           }
         </div>
@@ -75,7 +75,7 @@ const App = () => {
 
         <div className="h-full overflow-y-auto p-2">
           {
-            isPending ? ""
+            isPending ? <span className="text-center my-20 block text-lg font-semibold">Fetching Data....</span>
               : doing?.map(user => <UserCard key={user?._id} user={user} refetch={refetch} />)
           }
         </div>
@@ -96,7 +96,7 @@ const App = () => {
 
         <div className="h-full overflow-y-auto p-2">
           {
-            isPending ? ""
+            isPending ? <span className="text-center my-20 block text-lg font-semibold">Fetching Data....</span>
               : review?.map(user => <UserCard key={user?._id} user={user} refetch={refetch} />)
           }
         </div>
@@ -119,7 +119,7 @@ const App = () => {
 
         <div className="h-full overflow-y-auto p-2">
           {
-            isPending ? ""
+            isPending ? <span className="text-center my-20 block text-lg font-semibold">Fetching Data....</span>
               : completed?.map(user => <UserCard key={user?._id} user={user} refetch={refetch} />)
           }
         </div>
@@ -141,7 +141,7 @@ const App = () => {
 
         <div className="h-full overflow-y-auto p-2">
           {
-            isPending ? ""
+            isPending ? <span className="text-center my-20 block text-lg font-semibold">Fetching Data....</span>
               : overdone?.map(user => <UserCard key={user?._id} user={user} refetch={refetch} />)
           }
         </div>
